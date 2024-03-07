@@ -1,6 +1,5 @@
 //Modified code originally created by Tobias Bogliolo, publicist, visual designer and frontend developer based in Barcelona.
 
-code
 // Debugging utility function
 function debugLog(message) {
     var p = document.createElement('p');
