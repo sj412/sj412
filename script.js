@@ -10,9 +10,6 @@ function debugLog(message) {
     document.getElementById('debugLog').appendChild(p);
 }
 
-// Example usage of debugLog
-debugLog('Debugging is enabled.');
-
 $(document).ready(function() {
     // Handling radio button activation with jQuery
     $('.rb-tab').click(function() {
