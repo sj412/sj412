@@ -32,27 +32,23 @@ $(document).ready(function() {
                 alert("Review submitted successfully.");
                 // Optionally reset the form or redirect the user
             },
-            error: function(xhr, status, error) {
-    let errorMessage = "An error occurred. Please try again.";
-    if (xhr.status === 0) {
-        errorMessage = "Not connect. Verify Network.";
-    } else if (xhr.status == 404) {
-        errorMessage = "Requested page not found. [404]";
-    } else if (xhr.status == 500) {
-        errorMessage = "Internal Server Error [500].";
-    } else if (error === 'parsererror') {
-        errorMessage = "Requested JSON parse failed.";
-    } else if (error === 'timeout') {
-        errorMessage = "Time out error.";
-    } else if (error === 'abort') {
-        errorMessage = "Ajax request aborted.";
-    } else {
-        errorMessage = "Uncaught Error. " + xhr.responseText;
-    }
-    console.error('Error:', errorMessage);
-    $('#error-message').text(errorMessage).show();
-    //alert(errorMessage); // Consider replacing this with a more user-friendly error display method
-}
+            error: function(xhr, status, errorThrown) {
+                console.error("AJAX Error: ", status, errorThrown);
+                console.error("Response Text:", xhr.responseText);
+                // Displaying more detailed error information on the web page
+                let userFriendlyMessage = "An error occurred. Please try again. More details in console.";
+                if (xhr.responseText) {
+                    try {
+                        let responseJson = JSON.parse(xhr.responseText);
+                        if (responseJson && responseJson.error) {
+                            userFriendlyMessage += " Error: " + responseJson.error.message;
+                        }
+                    } catch (e) {
+                        // If there's an error parsing JSON, display the raw responseText
+                        userFriendlyMessage += " Error details: " + xhr.responseText;
+                    }
+                }
+                $('#error-message').text(userFriendlyMessage).show();
         });
     });
 });
