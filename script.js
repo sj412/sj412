@@ -1,5 +1,16 @@
 //Modified code originally created by Tobias Bogliolo, publicist, visual designer and frontend developer based in Barcelona.
 
+code
+// Debugging utility function
+function debugLog(message) {
+    var p = document.createElement('p');
+    p.textContent = message;
+    document.getElementById('debugLog').appendChild(p);
+}
+
+// Example usage of debugLog
+debugLog('Debugging is enabled.');
+
 //Global:
 var survey = []; //Bidimensional array: [ [1,3], [2,4] ]
 
