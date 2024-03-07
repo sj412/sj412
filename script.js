@@ -3,12 +3,6 @@
 //Global:
 var survey = []; //Bidimensional array: [ [1,3], [2,4] ]
 
-// Debugging utility function
-function debugLog(message) {
-    var p = document.createElement('p');
-    p.textContent = message;
-    document.getElementById('debugLog').appendChild(p);
-}
 
 $(document).ready(function() {
     // Handling radio button activation with jQuery
